@@ -1,8 +1,11 @@
 package com.company.creatures;
 
+import com.company.Connector.Connector;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class Human extends Animal {
@@ -139,4 +142,22 @@ public class Human extends Animal {
         }
     }
 
+    public void saveHuman() throws SQLException {
+        String sql = "insert into humans values ('" + this.firstName + "' , '" + this.lastName + "');";
+        System.out.println(sql);
+        Connector.executSQL(sql);
+    }
+    public void downloadHuman() throws SQLException{
+        ResultSet rs = Connector.getStatement().executeQuery("SELECT * FROM HUMANS;");
+        System.out.println("osoby znajdujące się w bazie danych: ");
+        while(rs.next()){
+            String firstName = rs.getString("firstName");
+            String lastName = rs.getString("lastName");
+
+            System.out.println("firstName: " + firstName);
+            System.out.println("lastName: " + lastName);
+            System.out.println();
+        }
+        rs.close();
+    }
     }
