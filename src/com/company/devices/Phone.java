@@ -4,10 +4,13 @@ import com.company.creatures.Human;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Phone extends Device implements Saleable {
 
     public final Double screenSize;
+    public Set<String> deviceApplication = new TreeSet<>();
 
     public static final String DEFAULT_APP_VERSION = "LATEST";
     public static final String DEFAULT_SERVER_ADDRESS = "appserver.me.com";
@@ -81,5 +84,10 @@ public class Phone extends Device implements Saleable {
         System.out.println();
         return true;
     }
-
+    public void installApp(Human human, Application app){
+        if(human.getCash() > app.appCost){
+            deviceApplication.add(app.appName);
+            human.setCash(human.getCash()-app.appCost);
+        }
+    }
 }
