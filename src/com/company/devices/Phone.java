@@ -3,6 +3,7 @@ package com.company.devices;
 import com.company.creatures.Human;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -10,7 +11,7 @@ import java.util.TreeSet;
 public class Phone extends Device implements Saleable {
 
     public final Double screenSize;
-    public Set<String> deviceApplication = new TreeSet<>();
+    public List<String> deviceApplication = new ArrayList<>();
 
     public static final String DEFAULT_APP_VERSION = "LATEST";
     public static final String DEFAULT_SERVER_ADDRESS = "appserver.me.com";
@@ -20,6 +21,12 @@ public class Phone extends Device implements Saleable {
         this.screenSize = screenSize;
     }
 
+    public void showApps(Set<String> deviceApplication){
+        for(String item : deviceApplication){
+            System.out.println(item);
+        }
+
+    }
 
     @Override
     public void turnOn() {
@@ -90,4 +97,5 @@ public class Phone extends Device implements Saleable {
             human.setCash(human.getCash()-app.appCost);
         }
     }
+
 }
