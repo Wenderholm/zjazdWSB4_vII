@@ -3,29 +3,18 @@ package com.company.devices;
 import com.company.creatures.Human;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Phone extends Device implements Saleable {
-
     public final Double screenSize;
+    public Map<String, Double> devApp = new HashMap<>();
     public List<String> deviceApplication = new ArrayList<>();
-
     public static final String DEFAULT_APP_VERSION = "LATEST";
     public static final String DEFAULT_SERVER_ADDRESS = "appserver.me.com";
 
     public Phone(Integer yearOfProduction, String producer, String model, Double screenSize) {
         super(yearOfProduction, producer, model);
         this.screenSize = screenSize;
-    }
-
-    public void showApps(Set<String> deviceApplication){
-        for(String item : deviceApplication){
-            System.out.println(item);
-        }
-
     }
 
     @Override
@@ -93,9 +82,71 @@ public class Phone extends Device implements Saleable {
     }
     public void installApp(Human human, Application app){
         if(human.getCash() > app.appCost){
+
+            devApp.put(app.appName,app.appCost);
             deviceApplication.add(app.appName);
             human.setCash(human.getCash()-app.appCost);
+
         }
     }
+
+
+    public boolean hasApp(Application app){
+        boolean hasThisApp = false;
+        for(int i=0; i < this.deviceApplication.size(); i++){
+            if(this.deviceApplication.get(i) == app.appName){
+                hasThisApp = true;
+                break;
+            }
+        }
+        return hasThisApp;
+    }
+    public boolean hasNameApp(String appName){
+        boolean hasThisApp = false;
+        for(int i=0; i < this.deviceApplication.size(); i++){
+            if(this.deviceApplication.get(i) == appName){
+                hasThisApp = true;
+                break;
+            }
+        }
+        return hasThisApp;
+    }
+    public void appekValue(){
+//      I sposób iteracji po map
+//        for (Map.Entry<String, Double> pair : devApp.entrySet()) {
+//            System.out.println(pair.getKey() + " " + pair.getValue());
+//        }
+//
+//        II sposób iteracji po map
+//        devApp.forEach((k, v) -> System.out.println(k + " " + v));
+//
+//        III sposób iteraci po map
+//        for(String key : devApp.keySet()) {
+//            String value = devApp.get(key);
+//            System.out.println(key + ": " + value);
+//        }
+        Double sum = 0.0;
+        for(String key : devApp.keySet()) {
+            Double value = devApp.get(key);
+            sum += value;
+        }
+        System.out.println(sum);
+    }
+
+
+    public void freeAplication(){
+          for(String key : devApp.keySet()) {
+            Double value = devApp.get(key);
+            if (value == 0){
+                System.out.print(key + ", ");
+            }
+        }
+    }
+
+//    public void sortedByAlphabet(){
+//        for (String str : treeMap.keySet()) {
+//            System.out.println(str);
+//        }
+//    }
 
 }
