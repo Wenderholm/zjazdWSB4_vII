@@ -143,10 +143,8 @@ public class Phone extends Device implements Saleable {
         }
     }
 
-//    public void sortedByAlphabet(){
-//        for (String str : treeMap.keySet()) {
-//            System.out.println(str);
-//        }
-//    }
+    public void sortedByAlphabet(){
+
+    }
 
 }

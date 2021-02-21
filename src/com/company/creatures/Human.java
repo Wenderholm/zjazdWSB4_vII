@@ -154,8 +154,8 @@ public class Human extends Animal {
             String firstName = rs.getString("firstName");
             String lastName = rs.getString("lastName");
 
-            System.out.println("firstName: " + firstName);
-            System.out.println("lastName: " + lastName);
+//            System.out.println("firstName: " + firstName);
+//            System.out.println("lastName: " + lastName);
             System.out.println();
         }
         rs.close();

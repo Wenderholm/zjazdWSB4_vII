@@ -6,6 +6,8 @@ import com.company.devices.Saleable;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Animal implements Saleable, Feedable {
 
@@ -88,18 +90,20 @@ public class Animal implements Saleable, Feedable {
         Connector.executSQL(sql);
     }
 
-    public void downloadAnimal() throws SQLException{
+    public List<Animal> downloadAnimal() throws SQLException{
+        List<Animal> animals = new ArrayList<Animal>();
         ResultSet rs = Connector.getStatement().executeQuery("SELECT * FROM ANIMALS;");
         System.out.println("lista zwierzat znajdujacych się w bazie danych");
         while(rs.next()){
             String species = rs.getString("species");
             String name = rs.getString("name");
-            int weight = rs.getInt("weight");
-            System.out.println("species: " + species);
-            System.out.println("name: " + name);
-            System.out.println("weight: " + weight);
-            System.out.println();
+            Double weight = rs.getDouble("weight");
+            //zapisywanie pobranych elementów w objekcie
+            Animal animal = new Animal(species,name,weight);
+            animals.add(animal);
+
         }
         rs.close();
+        return animals;
     }
 }
