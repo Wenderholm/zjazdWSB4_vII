@@ -33,10 +33,12 @@ public class Main {
 //        ZADANIE Z INSTALOWANIEM APLIKACJI
         pierwszy.setCash(5000.0);
         Phone nokia = new Phone(1900,"nokia","3510",7.0);
-        Application app1 = new Application("ZGoogleMap", 1.0,100.0);
-        Application app2 = new Application("OGoogleStore", 2.0,400.0);
-        Application app3 = new Application("XGmail", 4.1,0.0);
-        Application app4 = new Application("BOutlook", 3.0,0.0);
+        Application app1 = new Application("GoogleMap", 1.0,100.0);
+        Application app2 = new Application("GoogleStore", 2.0,400.0);
+        Application app3 = new Application("Gmail", 4.1,0.0);
+        Application app4 = new Application("Outlook", 3.0,0.0);
+        Application app5 = new Application("AutoMapa", 3.1,0.0);
+        Application app6 = new Application("PlayFilm", 3.3,700.0);
 
         System.out.println(pierwszy.firstName + " "+pierwszy.lastName + " posiada pieniędzy: " + pierwszy.getCash());
         pierwszy.phone = nokia;
@@ -44,10 +46,12 @@ public class Main {
         nokia.installApp(pierwszy,app2);
         nokia.installApp(pierwszy,app3);
         nokia.installApp(pierwszy,app4);
+        nokia.installApp(pierwszy,app5);
+        nokia.installApp(pierwszy,app6);
         System.out.println(pierwszy.firstName + " "+pierwszy.lastName + " posiada pieniędzy: " + pierwszy.getCash());
         System.out.println(nokia.deviceApplication);
-        System.out.println("czy jest aplikacja GoogleMap -> " + nokia.hasApp(app1));
-        System.out.println(" czy posiada aplikacje po nazwie -> " + nokia.hasNameApp("GoogleMap"));
+//        System.out.println("czy jest aplikacja GoogleMap -> " + nokia.hasApp(app1));
+//        System.out.println(" czy posiada aplikacje po nazwie -> " + nokia.hasNameApp("GoogleMap"));
 //        System.out.println("cena aplikacji to: " + nokia.appValue());
 
         System.out.println();

@@ -82,11 +82,12 @@ public class Phone extends Device implements Saleable {
     }
     public void installApp(Human human, Application app){
         if(human.getCash() > app.appCost){
-
             devApp.put(app.appName,app.appCost);
             deviceApplication.add(app.appName);
             human.setCash(human.getCash()-app.appCost);
-
+        }else{
+            System.out.println("nie masz odpowiedniej ilosci kasy aby zainstalować: " + app.appName
+                    + "możesz zainstalowac appkę do ceny " + human.getCash());
         }
     }
 
@@ -157,6 +158,8 @@ public class Phone extends Device implements Saleable {
         System.out.print("posortowane aplikacje cena : ");
         List<Double> sortedByPrice = new ArrayList<>(devApp.values());
         Collections.sort(sortedByPrice);
+//       poniższy zapis pozwala sortowac malejąco
+//        Collections.reverse(sortedByPrice);
         for (int i = 0; i < devApp.size(); i++) {
             if ( i <= devApp.size()-2){
             System.out.print(sortedByPrice.get(i)+ ", ");
