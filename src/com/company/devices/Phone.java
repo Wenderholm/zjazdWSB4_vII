@@ -135,16 +135,34 @@ public class Phone extends Device implements Saleable {
 
 
     public void freeAplication(){
+        System.out.print("aplikacje darmowe: ");
           for(String key : devApp.keySet()) {
             Double value = devApp.get(key);
             if (value == 0){
                 System.out.print(key + ", ");
             }
         }
+        System.out.println();
     }
 
     public void sortedByAlphabet(){
-
+        System.out.print("posortowane aplikacje : ");
+        Map<String, Double> appSorted = new TreeMap<>(devApp);
+        for(String appki : appSorted.keySet()){
+            System.out.print(appki + ", ");
+        }
+        System.out.println();
     }
-
+    public void sortedByPrice() {
+        System.out.print("posortowane aplikacje cena : ");
+        List<Double> sortedByPrice = new ArrayList<>(devApp.values());
+        Collections.sort(sortedByPrice);
+        for (int i = 0; i < devApp.size(); i++) {
+            if ( i <= devApp.size()-2){
+            System.out.print(sortedByPrice.get(i)+ ", ");
+        }else{
+                System.out.print(sortedByPrice.get(i)+ ".");
+            }
+        }
+    }
 }
