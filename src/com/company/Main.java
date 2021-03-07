@@ -72,14 +72,38 @@ public class Main {
         automobil.put("rajdowy", new Car(2000,"toyota","corolla","black",1000.0));
         automobil.put("klasyczny", new Car(1890,"toyota","classic","green",100000.0));
 
-        for(Car cars : automobil.values()){
-            System.out.println(cars);
-        }
+//        for(Car cars : automobil.values()){
+//            System.out.println(cars);
+//        }
 
         System.out.println("---------posortowane przez TreeMap-----");
         Map<String, Car> automobilSorted = new TreeMap<>(automobil);
         for(Car cars2 : automobilSorted.values()){
             System.out.println(cars2);
+        }
+//        System.out.println(automobilSorted(1));
+
+        Map<String, Double> countries = new HashMap<>();
+        countries.put("Poland", 36_000_000.0);
+        countries.put("Italy", 56_000_000.0);
+        countries.put("Germany", 41_000_000.0);
+        countries.put("France", 26_000_000.0);
+        countries.put("England", 66_000_000.0);
+
+//      posortowanie tablicy po wartosciach
+        List<Double> sortedCountries = new ArrayList<>(countries.values());
+        Collections.sort(sortedCountries);
+//        wypisanie z map najwieksze i najmniejszy kraj
+        Set<Map.Entry<String,Double>> entrySet = countries.entrySet();
+        for(Map.Entry<String,Double> entry: entrySet) {
+            Double numMin = sortedCountries.get(0);
+            Double numMax = sortedCountries.get(sortedCountries.size()-1);
+            if (numMin == entry.getValue()){
+                System.out.println("najmniejszy kraj to "+entry.getKey()+ " a liczba ludnosci to "+ entry.getValue());
+            };
+            if (numMax == entry.getValue()){
+                System.out.println("największy kraj to "+entry.getKey()+ " a liczba ludnosci to "+ entry.getValue() );
+            };
         }
 //
 //        System.out.println("-----------posortowane przez ArrayList------");
